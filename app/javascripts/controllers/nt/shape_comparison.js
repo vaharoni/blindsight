@@ -30,13 +30,14 @@ var controller = function() {
     [["R", 2], ["R", -1]], [["R", 1], ["T", -1]], [["R", 2], ["T", -2]], [["T", 2], ["R", -1]], [["T", 1], ["T", -2]],
     [["T", 1], ["T", -2]], [["T", 1], ["T", -1]], [["T", 1], ["T", -1]], [["T", 2], ["T", -1]], [["R", 2], ["R", -1]],
     [["R", 2], ["T", -1]], [["R", 1], ["T", -2]], [["R", 1], ["T", -1]], [["R", 2], ["T", -1]], [["T", 2], ["R", -1]],
-    [["T", 2], ["T", -2]], [["T", 1], ["T", -1]], [["T", 2], ["R", -2]], [["T", 1], ["R", -1]]],
+    [["T", 2], ["T", -2]], [["T", 1], ["T", -1]], [["T", 2], ["R", -2]], [["T", 1], ["R", -1]]];
 
-  this.run = async function(params) {
+  this.setup = function() {
     var FixationDot = new app.shapes.dotClass(app.grids.horizontal, 6.5, 'yellow');
-    var fixationDot = FixationDot.new(0,0);
-    fixationDot.show();
+    FixationDot.new(0,0).show();
+  }
 
+  this.run = function(param, done) {
     var Triangle = new app.shapes.triangleClass(app.grids.horizontal, 1, 3, 'white');
     var Rectangle = new app.shapes.rectangleClass(app.grids.horizontal, 1, 3, 'white');
 
@@ -46,16 +47,17 @@ var controller = function() {
       return shape;
     }
 
-    await app.sleep(2000);
+    setTimeout(function() {
+      var right = drawShape(param[0]);
+      var left = drawShape(param[1]);
+      right.show();
+      left.show();
 
-    for (i = 0; this.work && i < params.length; i++) {
-      var right = drawShape(params[i][0]);
-      var left = drawShape(params[i][1]);
-      await app.sleep(500);
-      right.hide();
-      left.hide();
-      await app.sleep(3500);
-    }
+      setTimeout(done(function() {
+        right.hide();
+        left.hide();
+      }), 500);
+    }, 1500)
   }
 }
 app.controllers.nt.shapeComparison = app.buildTrialController(controller);

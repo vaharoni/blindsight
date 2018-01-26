@@ -10,6 +10,10 @@ h1, h2, h3, h4, h5, h6 {
   color: white;
 }
 
+.bvt, .nt {
+  margin-top: 1em;
+}
+
 #step-1 {
   padding-top: 10em;
 }
@@ -18,9 +22,14 @@ h1, h2, h3, h4, h5, h6 {
   padding-top: 2em;
 }
 
-.bvt, .nt {
-  margin-top: 1em;
+#step-3 {
+  position: relative;
 }
 
-#main-content {
+#trial-index {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: white;
 }
+

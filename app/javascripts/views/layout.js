@@ -9,7 +9,6 @@ window.app.layout = {
   resetHeight: function() {
     this.width = $('body').width();
     this.height = $('body').height();
-    // $('body').css('line-height', this.height + 'px');
   },
 
   fullScreen: function() {

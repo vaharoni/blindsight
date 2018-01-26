@@ -3,29 +3,17 @@ window.app = {
   grids: {},
   shapes: {},
 
-  // Usage:
-  //  async function() {
-  //    await app.sleep(100);
-  //  }
-  sleep: function(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-  },
-
   buildTrialController: function(controllerConstructor) {
     var instance;
 
-    var builder = function() {
-      this.start = async function() {
-        console.log("Starting " + instance.name);
-        await instance.run.call(this, instance.params);
-        console.log("Finishing " + instance.name);
-      }
+    var context = function(controllerInstance) {
+      this.controllerInstance = controllerInstance;
     }
-    builder.prototype = new app.trialProto();
+    context.prototype = new app.contextProto();
 
     controllerConstructor.prototype.init = function() {
       $(this.trigger).on('click', function() {
-        app.currTrial = new builder();
+        app.currTrial = new context(instance);
         app.currTrial.start();
       })
     }
@@ -34,15 +22,47 @@ window.app = {
     return instance;
   },
 
-  trialProto: function() {
-    this.work = true;
+  contextProto: function() {
+    this.currIndex = 0;
+    this.inProgress = false;
+    this.done = false;
 
-    this.stop = function() {
-      this.work = false;
-    };
+    this.start = function() {
+      this.controllerInstance.setup();
+      this.next();
+    }
+
+    this.end = function() {
+      app.controllers.step.two.stop();
+      app.canvas.clear();
+    }
+
+    this.next = function() {
+      if (this.done) {
+        this.end();
+        return;
+      }
+
+      this.inProgress = true;
+      var self = this;
+      var nextFinished = function(callback) {
+        return function() {
+          callback();
+          self.inProgress = false;
+
+          self.currIndex++;
+          if (self.currIndex >= self.controllerInstance.params.length) {
+            self.done = true;
+          }
+        }
+      }
+
+      $('#trial-index').text((this.currIndex + 1) + ' / ' + this.controllerInstance.params.length);
+      var param = this.controllerInstance.params[this.currIndex];
+      this.controllerInstance.run(param, nextFinished);
+    }
   }
 }
-
 
 $('document').ready(function(){
   app.layout.init();
@@ -54,11 +74,15 @@ $('document').ready(function(){
   });
 
   $(document).on('keydown', function(e) {
-    if (e.key == 'Escape') {
+    if (e.key === 'Tab') {
       if (app.currTrial) {
-        app.currTrial.stop();
-        app.controllers.step.two.stop();
-        app.canvas.clear();
+        app.currTrial.end();
+      }
+    }
+
+    if (e.key === 'ArrowRight') {
+      if (app.currTrial && !app.currTrial.inProgress) {
+        app.currTrial.next();
       }
     }
   });

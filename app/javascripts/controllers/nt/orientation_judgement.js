@@ -17,24 +17,21 @@ var controller = function() {
     [-1, 0, 1], [3, 0, -1], [-1, -1, -1], [2, 1, 0], [-1, 1, 0], [1, 0, 0], [-2, 1, 1], [1, 1, 1], [-2, -1, 0],
     [1, -1, 1], [3, 1, -1], [2, -1, 0], [-3, 0, 1], [2, 1, -1], [-3, 1, -1], [1, 0, -1], [-1, 0, 1], [3, -1, 1],
     [-1, 1, -1], [2, -1, 1], [-2, 1, 0], [3, 0, 1], [2, 0, -1], [2, 1, 1], [2, -1, -1], [2, -1, 0], [-2, -1, 0],
-    [3, 0, 0]],
+    [3, 0, 0]];
 
-  this.run = async function(params) {
+  this.setup = function() {
     var FixationDot = new app.shapes.dotClass(app.grids.sixByThree, 0.8, 'yellow');
-    var fixationDot = FixationDot.new(0,0);
-    fixationDot.show();
+    FixationDot.new(0,0).show();
+  }
 
+  this.run = function(param, done) {
     var Rectangle = new app.shapes.rectangleClass(app.grids.sixByThree, 1, 3, 'white');
 
-    await app.sleep(2000);
-
-    for (i = 0; this.work && i < params.length; i++) {
-      var rect = Rectangle.new.apply(Rectangle, params[i]);
+    setTimeout(function() {
+      var rect = Rectangle.new.apply(Rectangle, param);
       rect.show();
-      await app.sleep(200);
-      rect.hide();
-      await app.sleep(3500);
-    }
+      setTimeout(done(rect.hide), 200);
+    }, 1500)
   }
 }
 app.controllers.nt.orientationJudgement = app.buildTrialController(controller);
