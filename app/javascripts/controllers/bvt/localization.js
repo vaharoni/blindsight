@@ -15,12 +15,12 @@ var controller = function() {
     [-1, 1], [2, 1], [1, 2], [1, -2], [2, 1], [-2, -2], [-2, 1]],
 
   this.run = async function(params) {
-    var TrialDot = new app.shapes.dotClass(1.5, app.grids.fourByFour);
-    var FixationDot = new app.shapes.dotClass(0.8, app.grids.fourByFour, 'yellow');
+    var TrialDot = new app.shapes.dotClass(app.grids.fourByFour, 1.5);
+    var FixationDot = new app.shapes.dotClass(app.grids.fourByFour, 0.8, 'yellow');
     var fixationDot = FixationDot.new(0,0);
     fixationDot.show();
 
-    await app.sleep(3500);
+    await app.sleep(2000);
 
     for (i = 0; this.work && i < params.length; i++) {
       var dot = TrialDot.new(params[i][0], params[i][1]);

@@ -2,7 +2,7 @@
 // var dot1 = Dot.new(3, 4)
 // dot1.show();
 // dot1.hide();
-window.app.shapes.dotClass = function(diameter, grid, color) {
+window.app.shapes.dotClass = function(grid, diameter, color) {
   this.new = function(x, y) {
 
     var draw = function(radiusCorrection) {

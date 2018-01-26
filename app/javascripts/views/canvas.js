@@ -4,11 +4,12 @@ window.app.canvas = new function() {
     this.context = $('#canvas')[0].getContext('2d');
     this.context.fillStyle = 'white';
     this.context.strokeStyle = 'white';
+    this.context.font = '24px serif';
   }
 
   this.inColor = function(callback, color) {
-    var prevFill = self.canvas.fillStyle;
-    var prevStroke = self.canvas.strokeStyle;
+    var prevFill = this.context.fillStyle;
+    var prevStroke = this.context.strokeStyle;
     this.context.fillStyle = color;
     this.context.strokeStyle = color;
     callback(this.context);
@@ -22,5 +23,19 @@ window.app.canvas = new function() {
 
   this.inBackColor = function(callback, color) {
     this.inColor(callback, color || 'black')
+  }
+
+  this.inFontStyle = function(callback, size, style) {
+    style = style || 'serif';
+    var prevFontStyle = this.context.font;
+    this.context.font = size + 'px ' + style;
+    callback(this.context);
+    this.context.font = prevFontStyle;
+  }
+
+  this.clear = function() {
+    this.inBackColor(function(c) {
+      c.fillRect(0, 0, app.layout.width, app.layout.height)
+    });
   }
 }()
