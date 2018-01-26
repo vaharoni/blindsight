@@ -2,26 +2,27 @@ window.app.layout = {
   pixelsPerCm: 45,
 
   init: function() {
-    this.resetHeight();
-    $(window).on('resize', this.resetHeight);
+    this.resetDimensions();
+    $(window).on('resize', this.resetDimensions);
   },
 
-  resetHeight: function() {
-    this.width = $('body').width();
-    this.height = $('body').height();
-  },
-
-  fullScreen: function() {
-    var el = document.documentElement,
-      rfs = el.requestFullscreen
-        || el.webkitRequestFullScreen
-        || el.mozRequestFullScreen
-        || el.msRequestFullscreen;
-
-    rfs.call(el);
+  resetDimensions: function() {
+    this.width = $(document).width();
+    this.height = $(document).height();
   },
 
   length: function(cm) {
     return cm * this.pixelsPerCm;
   }
+
+  // For some reason moving programmatically to full screen did not change the height correctly.
+  // fullScreen: function() {
+  //   var el = document.documentElement,
+  //     rfs = el.requestFullscreen
+  //       || el.webkitRequestFullScreen
+  //       || el.mozRequestFullScreen
+  //       || el.msRequestFullscreen;
+  //
+  //   rfs.call(el);
+  // },
 }
