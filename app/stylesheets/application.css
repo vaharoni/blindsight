@@ -6,5 +6,21 @@ body {
   vertical-align: middle;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  color: white;
+}
+
+#step-1 {
+  padding-top: 10em;
+}
+
+#step-2 {
+  padding-top: 2em;
+}
+
+.bvt, .nt {
+  margin-top: 1em;
+}
+
 #main-content {
 }

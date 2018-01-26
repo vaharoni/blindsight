@@ -3,23 +3,57 @@
 <head>
   <title>Mom</title>
 
+  <!-- Vendor JS -->
   <script src="vendor/javascripts/jquery-3.3.1.min.js"></script>
   <script src="vendor/javascripts/bootstrap.min.js"></script>
-  <script src="app/javascripts/application.js"></script>
 
+  <!-- Vendor CSS -->
   <link rel="stylesheet" type="text/css" href="vendor/stylesheets/bootstrap.min.css">
+
+  <!-- Application JS -->
+  <script src="app/javascripts/application.js"></script>
+  <script src="app/javascripts/views/grids/four_by_four.js"></script>
+  <script src="app/javascripts/views/shapes/dot.js"></script>
+  <script src="app/javascripts/views/canvas.js"></script>
+  <script src="app/javascripts/views/layout.js"></script>
+  <script src="app/javascripts/controllers/step1.js"></script>
+  <script src="app/javascripts/controllers/step2.js"></script>
+  <script src="app/javascripts/controllers/bvt/letter_identification.js"></script>
+  <script src="app/javascripts/controllers/bvt/localization.js"></script>
+  <script src="app/javascripts/controllers/nt/detection.js"></script>
+  <script src="app/javascripts/controllers/nt/letter_identification.js"></script>
+  <script src="app/javascripts/controllers/nt/orientation_judgement.js"></script>
+  <script src="app/javascripts/controllers/nt/shape_comparison.js"></script>
+
+  <!-- Application CSS -->
   <link rel="stylesheet" type="text/css" href="app/stylesheets/application.css">
 </head>
 
 <body>
 
-<div id="main-content" class="container-fluid">
-
-  <div class="text-center panel">
-    <div class="btn btn-lg btn-primary" id="start">התחילי</div>
+<div id="main-content" class="container-fluid text-center">
+  <div class="d-none" id="step-1">
+    <div class="btn btn-lg btn-primary" id="start">Start</div>
   </div>
 
-  <div class="panel d-none">
+  <div class="d-none" id="step-2">
+    <div class="row">
+      <div class="col-6">
+        <h3>Behavioral visual tests</h3>
+        <div class="bvt btn btn-lg btn-primary" id="bvt-localization">Localization</div><br/>
+        <div class="bvt btn btn-lg btn-primary" id="bvt-letter-identification">Letter identification</div>
+      </div>
+      <div class="col-6">
+        <h3>Neurovisual training</h3>
+        <div class="nt btn btn-lg btn-primary" id="nt-shape-comparison">Shape comparison</div><br/>
+        <div class="nt btn btn-lg btn-primary" id="nt-detection">Detection</div><br/>
+        <div class="nt btn btn-lg btn-primary" id="nt-orientation-judgement">Judgement of orientation</div><br/>
+        <div class="nt btn btn-lg btn-primary" id="nt-letter-identification">Letter identification</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-none" id="step-3">
     <canvas id="canvas" width="100%" height="100%">
     </canvas>
   </div>
