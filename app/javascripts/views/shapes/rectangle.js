@@ -1,31 +1,31 @@
 window.app.shapes.rectangleClass = function(grid, width, height, color) {
   // slant is either 0 (default), -1, or 1
-  this.new = function(x, y, slant) {
-    slant = slant || 0;
+  this.new = function(x, y, rotation) {
+    rotation = rotation || 0;
 
     var draw = function(correction) {
-      // correction = correction || 0;
-      //
-      // return function(c) {
-      //   var slantedHeight = slant * (height / 2) / Math.sqrt(2);
-      //
-      //   var startX = grid.getX(x) + app.layout.length(slantedHeight - width / 2);
-      //   var startY = grid.getY(y) - app.layout.length(Math.abs(slantedHeight));
-      //
-      //   c.beginPath();
-      //   c.moveTo(startX, startY);
-      //   c.lineTo(startX + app.layout.length(width), startY);
-      //   c.lineTo(startX + app.layout.length(width - slantedHeight), startY + slantedHeight * 2);
-      //   c.fill();
-      // }
+      correction = correction || 0;
 
       return function(c) {
-        var startX = grid.getX(x) - app.layout.length(width / 2);
-        var startY = grid.getY(y) - app.layout.length(height / 2);
-        c.fillRect(startX - correction, startY - correction,
-          app.layout.length(width) + correction * 2, app.layout.length(height) + correction * 2);
-      }
+        var degree = (90 - rotation * 45) / 180 * Math.PI;
+        var centerX = grid.getX(x);
+        var centerY = grid.getY(y);
 
+        var offsetX = app.layout.length(Math.cos(degree) * height / 2);
+        var offsetY = app.layout.length(Math.sin(degree) * (height / 2));
+
+        var p1 = { x: centerX + offsetX - app.layout.length(width / 2), y: centerY - offsetY }
+        var p2 = { x: centerX + offsetX + app.layout.length(width / 2), y: centerY - offsetY }
+        var p3 = { x: centerX - offsetX + app.layout.length(width / 2), y: centerY + offsetY }
+        var p4 = { x: centerX - offsetX - app.layout.length(width / 2), y: centerY + offsetY }
+
+        c.beginPath();
+        c.moveTo(p1.x - correction, p1.y - correction);
+        c.lineTo(p2.x + correction, p2.y - correction);
+        c.lineTo(p3.x + correction, p3.y + correction);
+        c.lineTo(p4.x - correction, p4.y + correction);
+        c.fill();
+      }
     }
 
     return {
@@ -34,7 +34,7 @@ window.app.shapes.rectangleClass = function(grid, width, height, color) {
       },
 
       hide: function() {
-        app.canvas.inBackColor(draw(1));
+        app.canvas.inBackColor(draw(4));
       }
     }
   }
