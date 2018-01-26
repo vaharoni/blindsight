@@ -10,7 +10,7 @@ window.app.shapes.dotClass = function(grid, diameter, color) {
 
       return function(c) {
         c.beginPath();
-        c.arc(grid.getX(x), grid.getY(y), diameter / 2 * app.layout.pixelsPerCm + radiusCorrection, 0, Math.PI * 2, true);
+        c.arc(grid.getX(x), grid.getY(y), app.layout.length(diameter / 2) + radiusCorrection, 0, Math.PI * 2, true);
         c.fill();
       }
     }

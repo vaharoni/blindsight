@@ -13,7 +13,7 @@ window.app.shapes.letterClass = function(grid, size, color) {
       hide: function() {
         app.canvas.inBackColor(function(c) {
           c.beginPath();
-          c.arc(grid.getX(x), grid.getY(y), size, 0, Math.PI * 2, true);
+          c.arc(grid.getX(x), grid.getY(y), size + 10, 0, Math.PI * 2, true);
           c.fill();
         });
       }

@@ -20,5 +20,9 @@ window.app.layout = {
         || el.msRequestFullscreen;
 
     rfs.call(el);
+  },
+
+  length: function(cm) {
+    return cm * this.pixelsPerCm;
   }
 }

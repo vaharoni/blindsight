@@ -58,6 +58,7 @@ $('document').ready(function(){
       if (app.currTrial) {
         app.currTrial.stop();
         app.controllers.step.two.stop();
+        app.canvas.clear();
       }
     }
   });

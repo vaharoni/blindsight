@@ -23,7 +23,7 @@ var controller = function() {
     await app.sleep(2000);
 
     for (i = 0; this.work && i < params.length; i++) {
-      var dot = TrialDot.new(params[i][0], params[i][1]);
+      var dot = TrialDot.new.apply(TrialDot, params[i]);
       dot.show();
       await app.sleep(500);
       dot.hide();

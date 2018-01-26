@@ -28,7 +28,7 @@ var controller = function() {
     await app.sleep(2000);
 
     for (i = 0; this.work && i < params.length; i++) {
-      var letter = Letter.new(params[i][0], params[i][1], params[i][2])
+      var letter = Letter.new.apply(Letter, params[i])
       letter.show();
       await app.sleep(500);
       letter.hide();
