@@ -9,8 +9,17 @@ window.app = {
   //  }
   sleep: function(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
+  },
+
+  trialProto: function() {
+    this.work = true;
+
+    this.stop = function() {
+      this.work = false;
+    };
   }
 }
+
 
 $('document').ready(function(){
   app.layout.init();

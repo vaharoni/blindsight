@@ -19,14 +19,8 @@ app.controllers.bvt.localization = {
   },
 
   trial: function(order) {
-    this.work = true;
-
-    this.stop = function() {
-      this.work = false;
-    };
-
     this.start = async function() {
-      console.log('starting');
+      console.log('starting localization');
 
       var TrialDot = new app.shapes.dotClass(1.5, app.grids.fourByFour);
       var FixationDot = new app.shapes.dotClass(0.8, app.grids.fourByFour, 'yellow');
@@ -43,7 +37,8 @@ app.controllers.bvt.localization = {
         await app.sleep(3500);
       }
 
-      console.log('done');
+      console.log('done localization');
     }
   }
 }
+app.controllers.bvt.localization.trial.prototype = new app.trialProto();
