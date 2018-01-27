@@ -4,25 +4,22 @@ window.app = {
   shapes: {},
 
   buildTrialController: function(controllerConstructor) {
-    var instance;
-
-    var context = function(controllerInstance) {
-      this.controllerInstance = controllerInstance;
-    }
-    context.prototype = new app.contextProto();
-
-    controllerConstructor.prototype.init = function() {
-      $(this.trigger).on('click', function() {
-        app.currTrial = new context(instance);
-        app.currTrial.start();
-      })
-    }
-
-    instance = new controllerConstructor();
-    return instance;
+    controllerConstructor.prototype = app.controllerProto;
+    return new controllerConstructor();
   },
 
-  contextProto: function() {
+  controllerProto: {
+    init: function() {
+      var self = this;
+      $(this.trigger).on('click', function() {
+        app.currTrial = new app.trialContext(self);
+        app.currTrial.start();
+      })
+    },
+  },
+
+  trialContext: function(controller) {
+    this.controllerInstance = controller;
     this.currIndex = 0;
     this.inProgress = false;
     this.done = false;
