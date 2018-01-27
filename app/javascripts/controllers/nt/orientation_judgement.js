@@ -19,6 +19,11 @@ var controller = function() {
     [-1, 1, -1], [2, -1, 1], [-2, 1, 0], [3, 0, 1], [2, 0, -1], [2, 1, 1], [2, -1, -1], [2, -1, 0], [-2, -1, 0],
     [3, 0, 0]];
 
+  this.paramToCsv = function(param) {
+    var orientation = param[2] === -1 ? "Left" : (param[2] === 0 ? "Vertical" : "Right");
+    return (param[0] < 0 ? "Left" : "Right") + "," + orientation;
+  }
+
   this.setup = function() {
     var FixationDot = new app.shapes.dotClass(app.grids.sixByThree, 0.8, 'yellow');
     FixationDot.new(0,0).show();

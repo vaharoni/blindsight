@@ -19,6 +19,10 @@ var controller = function() {
     [1, -2, "L"], [1, 2, "A"], [-1, 1, "L"], [2, 1, "A"], [-2, 2, "A"], [-2, 1, "L"], [-2, -2, "A"], [1, -2, "C"],
     [-2, -2, "A"]];
 
+  this.paramToCsv = function(param) {
+    return (param[0] < 0 ? "Left" : "Right") + "," + param[2];
+  }
+
   this.setup = function() {
     var FixationDot = new app.shapes.dotClass(app.grids.fourByFour, 0.8, 'yellow');
     FixationDot.new(0,0).show();

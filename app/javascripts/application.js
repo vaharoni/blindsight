@@ -3,6 +3,13 @@ window.app = {
   grids: {},
   shapes: {},
 
+  export: function() {
+    var str = "";
+    $.each(app.controllers.bvt, function(_key, controller) { str += controller.export() + "\n" });
+    $.each(app.controllers.nt, function(_key, controller) { str += controller.export() + "\n" });
+    console.log(str);
+  },
+
   buildTrialController: function(controllerConstructor) {
     controllerConstructor.prototype = app.controllerProto;
     return new controllerConstructor();
@@ -16,6 +23,14 @@ window.app = {
         app.currTrial.start();
       })
     },
+
+    export: function() {
+      var str = this.name + "\n";
+      for (i = 0; i < this.params.length; i++) {
+        str += (i + 1) + "," + this.paramToCsv(this.params[i]) + "\n";
+      }
+      return str;
+    }
   },
 
   trialContext: function(controller) {

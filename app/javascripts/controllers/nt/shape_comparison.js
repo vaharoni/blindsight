@@ -32,6 +32,10 @@ var controller = function() {
     [["R", 2], ["T", -1]], [["R", 1], ["T", -2]], [["R", 1], ["T", -1]], [["R", 2], ["T", -1]], [["T", 2], ["R", -1]],
     [["T", 2], ["T", -2]], [["T", 1], ["T", -1]], [["T", 2], ["R", -2]], [["T", 1], ["R", -1]]];
 
+  this.paramToCsv = function(param) {
+    return (param[1][1] === -1 ? "Near" : "Far") + "," + (param[0][0] === param[1][0] ? "Same" : "Different");
+  }
+
   this.setup = function() {
     var FixationDot = new app.shapes.dotClass(app.grids.horizontal, 6.5, 'yellow');
     FixationDot.new(0,0).show();
