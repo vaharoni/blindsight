@@ -69,7 +69,8 @@ window.app = {
         }
       }
 
-      $('#trial-index').text((this.currIndex + 1) + ' / ' + this.controllerInstance.params.length);
+      app.layout.showProgress(this.currIndex + 1, this.controllerInstance.params.length);
+
       var param = this.controllerInstance.params[this.currIndex];
       this.controllerInstance.run(param, nextFinished);
     }
@@ -96,6 +97,10 @@ $('document').ready(function(){
       if (app.currTrial && !app.currTrial.inProgress) {
         app.currTrial.next();
       }
+    }
+
+    if (e.key === ' ') {
+      app.layout.showSpacePress();
     }
   });
 });

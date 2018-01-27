@@ -13,6 +13,19 @@ window.app.layout = {
 
   length: function(cm) {
     return cm * this.pixelsPerCm;
+  },
+
+  showProgress: function(curr, total) {
+    $('#trial-index').text(curr + ' / ' + total);
+    this.resetSpacePress();
+  },
+
+  showSpacePress: function() {
+    $('#space-press').removeClass('d-none');
+  },
+
+  resetSpacePress: function() {
+    $('#space-press').addClass('d-none');
   }
 
   // For some reason moving programmatically to full screen did not change the height correctly.
