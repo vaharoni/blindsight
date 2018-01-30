@@ -29,9 +29,14 @@ var controller = function() {
     var TrialDot = new app.shapes.dotClass(app.grids.fourByFour, 1.5);
 
     setTimeout(function() {
-      var dot = TrialDot.new.apply(TrialDot, param);
-      dot.show();
-      setTimeout(done(dot.hide), 500);
+      if (param.length > 0) {
+        var dot = TrialDot.new.apply(TrialDot, param);
+        dot.show();
+        setTimeout(done(dot.hide), 500);
+      } else {
+        setTimeout(done(), 500);
+      }
+      app.sounds.both();
     }, 1500)
   }
 }

@@ -29,6 +29,7 @@ var controller = function() {
     setTimeout(function() {
       var dot = TrialDot.new.apply(TrialDot, param);
       dot.show();
+      app.sounds.chooseEffect(param[0]);
       setTimeout(done(dot.hide), 500);
     }, 1500)
   }

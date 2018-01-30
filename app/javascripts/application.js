@@ -59,7 +59,7 @@ window.app = {
       var self = this;
       var nextFinished = function(callback) {
         return function() {
-          callback();
+          if (callback) { callback() };
           self.inProgress = false;
 
           self.currIndex++;
@@ -80,6 +80,7 @@ window.app = {
 $('document').ready(function(){
   app.layout.init();
   app.canvas.init();
+  app.sounds.init();
   $.each(app.controllers, function(_key, controllerGroup) {
     $.each(controllerGroup, function(_name, controller) {
       controller.init();

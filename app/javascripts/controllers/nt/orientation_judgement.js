@@ -35,6 +35,7 @@ var controller = function() {
     setTimeout(function() {
       var rect = Rectangle.new.apply(Rectangle, param);
       rect.show();
+      app.sounds.chooseEffect(param[0]);
       setTimeout(done(rect.hide), 200);
     }, 1500)
   }

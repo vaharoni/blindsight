@@ -46,7 +46,7 @@ var controller = function() {
     var Rectangle = new app.shapes.rectangleClass(app.grids.horizontal, 1, 3, 'white');
 
     var drawShape = function(arr) {
-      var shape = arr[0] == "R" ? Rectangle.new(arr[1], 1) : Triangle.new(arr[1], 1);
+      var shape = arr[0] === "R" ? Rectangle.new(arr[1], 1) : Triangle.new(arr[1], 1);
       shape.show();
       return shape;
     }
@@ -56,6 +56,7 @@ var controller = function() {
       var left = drawShape(param[1]);
       right.show();
       left.show();
+      app.sounds.both();
 
       setTimeout(done(function() {
         right.hide();

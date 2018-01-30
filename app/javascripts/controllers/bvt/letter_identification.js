@@ -34,6 +34,7 @@ var controller = function() {
     setTimeout(function() {
       var letter = Letter.new.apply(Letter, param);
       letter.show();
+      app.sounds.chooseEffect(param[0]);
       setTimeout(done(letter.hide), 500);
     }, 1500)
   }
