@@ -48,14 +48,18 @@
     <div class="row">
       <div class="col-6">
         <h3>Behavioral visual tests</h3>
-        <div class="bvt btn btn-lg btn-primary" id="bvt-localization">Localization</div><br/>
+        <div class="bvt btn btn-lg btn-primary" id="bvt-localization">Localization</div>
+        <br/>
         <div class="bvt btn btn-lg btn-primary" id="bvt-letter-identification">Letter identification</div>
       </div>
       <div class="col-6">
         <h3>Neurovisual training</h3>
-        <div class="nt btn btn-lg btn-primary" id="nt-shape-comparison">Shape comparison</div><br/>
-        <div class="nt btn btn-lg btn-primary" id="nt-detection">Detection</div><br/>
-        <div class="nt btn btn-lg btn-primary" id="nt-orientation-judgement">Judgement of orientation</div><br/>
+        <div class="nt btn btn-lg btn-primary" id="nt-shape-comparison">Shape comparison</div>
+        <br/>
+        <div class="nt btn btn-lg btn-primary" id="nt-detection">Detection</div>
+        <br/>
+        <div class="nt btn btn-lg btn-primary" id="nt-orientation-judgement">Judgement of orientation</div>
+        <br/>
         <div class="nt btn btn-lg btn-primary" id="nt-letter-identification">Letter identification</div>
       </div>
     </div>
@@ -73,7 +77,21 @@
   </div>
 
   <div class="d-none" id="step-3">
-    <div id="pause-glass" class="d-none">Paused</div>
+    <div id="pause-glass" class="d-none">
+      <p>
+        - Paused -
+      </p>
+      <span>
+        כדי לצאת מהתרגיל ולחזור לתפריט הראשי
+      </span>
+      <span>
+        ESC או TAB
+      </span>
+      <br/>
+      <span>כל מקש אחר כדי להמשיך בתרגיל הנוכחי</span>
+      <p>
+      </p>
+    </div>
     <canvas id="canvas"></canvas>
     <span id="status-bar">
       <span id="trial-index"></span>

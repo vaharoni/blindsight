@@ -52,10 +52,8 @@ window.app = {
     }
 
     this.end = function() {
-      if (!this.done) {
-        app.controllers.navigation.stop();
-      }
       this.done = true;
+      app.controllers.navigation.stop();
     }
 
     this.pause = function() {
@@ -80,11 +78,12 @@ window.app = {
 
     this.next = function() {
       if (this.done) {
-        this.end();
+        this.inProgress = false;
         return;
       }
 
       if (this.paused) {
+        this.inProgress = false;
         return;
       }
 
@@ -122,21 +121,23 @@ $('document').ready(function(){
   $.each(app.controllers.bvt, function(_key, controller) { controller.init() });
 
   $(window).on('keydown', function(e) {
+    if (!app.currTrial) {
+      return;
+    }
+
     if (e.which === 9 || e.which === 27) {
       // Tab or Esc
-      if (app.currTrial) {
+      if (app.currTrial.paused) {
         app.currTrial.end();
+      } else {
+        app.currTrial.pause();
       }
       e.preventDefault();
-    } else if (app.currTrial && app.currTrial.paused) {
+    } else if (app.currTrial && app.currTrial.paused && e.which !== 0 && !e.metaKey && !e.ctrlKey && !e.altKey) {
       app.currTrial.unpause();
     } else if (e.which === 32) {
       // Space
       app.layout.showSpacePress();
-    } else {
-      if (app.currTrial) {
-        app.currTrial.pause();
-      }
     }
   });
 });
