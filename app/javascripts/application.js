@@ -88,20 +88,24 @@ $('document').ready(function(){
     });
   });
 
-  $(document).on('keydown', function(e) {
-    if (e.key === 'Tab') {
+  $(window).on('keydown', function(e) {
+    // Tab or Esc
+    if (e.which === 9 || e.which === 27) {
       if (app.currTrial) {
         app.currTrial.end();
       }
+      e.preventDefault();
     }
 
-    if (e.key === 'ArrowRight') {
+    // Right Arrow
+    if (e.which === 39) {
       if (app.currTrial && !app.currTrial.inProgress) {
         app.currTrial.next();
       }
     }
 
-    if (e.key === ' ') {
+    // Space
+    if (e.which === 32) {
       app.layout.showSpacePress();
     }
   });
