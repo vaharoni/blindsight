@@ -2,7 +2,7 @@
 // Possible y: [0, 1]
 window.app.grids.horizontal = {
   getX: function(x) {
-    var correction = x == 0 ? 0 : Math.abs(x) / x * 6.5;
+    var correction = x == 0 ? 0 : Math.abs(x) / x * 6.5 / 2;
     return app.layout.width / 2 + app.layout.length(x * 3 + correction);
   },
 
