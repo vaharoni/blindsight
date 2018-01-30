@@ -1,5 +1,5 @@
 window.app = {
-  controllers: { step: {}, nt: {}, bvt: {} },
+  controllers: { nt: {}, bvt: {} },
   grids: {},
   shapes: {},
   models: {},
@@ -48,7 +48,7 @@ window.app = {
     }
 
     this.end = function() {
-      app.controllers.step.two.stop();
+      app.controllers.navigation.stop();
     }
 
     this.next = function() {
@@ -85,11 +85,9 @@ $('document').ready(function(){
   app.calibrationCanvas.init();
   app.calibrationCanvas.show();
   app.sounds.init();
-  $.each(app.controllers, function(_key, controllerGroup) {
-    $.each(controllerGroup, function(_name, controller) {
-      controller.init();
-    });
-  });
+  app.controllers.navigation.init();
+  $.each(app.controllers.nt, function(_key, controller) { controller.init() });
+  $.each(app.controllers.bvt, function(_key, controller) { controller.init() });
 
   $(window).on('keydown', function(e) {
     // Tab or Esc

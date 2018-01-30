@@ -1,4 +1,4 @@
-window.app.controllers.step.two = {
+window.app.controllers.navigation = {
   init: function() {
     $('.bvt, .nt').on('click', function() {
       $('#step-2, #step-3').toggleClass('d-none');
