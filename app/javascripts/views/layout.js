@@ -1,6 +1,4 @@
 window.app.layout = {
-  pixelsPerCm: 45,
-
   init: function() {
     this.resetDimensions();
     $(window).on('resize', this.resetDimensions);
@@ -12,7 +10,7 @@ window.app.layout = {
   },
 
   length: function(cm) {
-    return cm * this.pixelsPerCm;
+    return cm * app.models.pixelsPerCm.val();
   },
 
   showProgress: function(curr, total) {

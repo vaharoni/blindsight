@@ -2,6 +2,7 @@ window.app = {
   controllers: { step: {}, nt: {}, bvt: {} },
   grids: {},
   shapes: {},
+  models: {},
 
   export: function() {
     var str = "";
