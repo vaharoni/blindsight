@@ -31,13 +31,10 @@ var controller = function() {
 
   this.run = function(param, done) {
     var Rectangle = new app.shapes.rectangleClass(app.grids.sixByThree, 1, 3, 'white');
-
-    setTimeout(function() {
-      var rect = Rectangle.new.apply(Rectangle, param);
-      rect.show();
-      app.sounds.chooseEffect(param[0]);
-      setTimeout(done(rect.hide), 200);
-    }, 1500)
+    var rect = Rectangle.new.apply(Rectangle, param);
+    rect.show();
+    app.sounds.chooseEffect(param[0]);
+    setTimeout(done(rect.hide), 200);
   }
 }
 app.controllers.nt.orientationJudgement = app.buildTrialController(controller);

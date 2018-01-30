@@ -25,13 +25,10 @@ var controller = function() {
 
   this.run = function(param, done) {
     var TrialDot = new app.shapes.dotClass(app.grids.fourByFour, 1.5);
-
-    setTimeout(function() {
-      var dot = TrialDot.new.apply(TrialDot, param);
-      dot.show();
-      app.sounds.chooseEffect(param[0]);
-      setTimeout(done(dot.hide), 500);
-    }, 1500)
+    var dot = TrialDot.new.apply(TrialDot, param);
+    dot.show();
+    app.sounds.chooseEffect(param[0]);
+    setTimeout(done(dot.hide), 500);
   }
 }
 app.controllers.bvt.localization = app.buildTrialController(controller);

@@ -30,13 +30,10 @@ var controller = function() {
 
   this.run = function(param, done) {
     var Letter = new app.shapes.letterClass(app.grids.fourByFour, 72, 'white');
-
-    setTimeout(function() {
-      var letter = Letter.new.apply(Letter, param)
-      letter.show();
-      app.sounds.chooseEffect(param[0]);
-      setTimeout(done(letter.hide), 500);
-    }, 1500)
+    var letter = Letter.new.apply(Letter, param)
+    letter.show();
+    app.sounds.chooseEffect(param[0]);
+    setTimeout(done(letter.hide), 500);
   }
 }
 app.controllers.nt.letterIdentification = app.buildTrialController(controller);

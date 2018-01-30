@@ -39,16 +39,43 @@ window.app = {
     this.currIndex = 0;
     this.inProgress = false;
     this.done = false;
+    this.paused = false;
 
     this.start = function() {
+      this.paused = false;
       app.canvas.resetDimensions();
       app.canvas.clear();
       this.controllerInstance.setup();
-      this.next();
+      app.layout.removePauseMessage();
+      app.layout.showProgress(1, this.controllerInstance.params.length);
+      this.scheduleNext();
     }
 
     this.end = function() {
-      app.controllers.navigation.stop();
+      if (!this.done) {
+        app.controllers.navigation.stop();
+      }
+      this.done = true;
+    }
+
+    this.pause = function() {
+      this.paused = true;
+      app.layout.showPauseMessage();
+    }
+
+    this.unpause = function() {
+      this.paused = false;
+      app.layout.removePauseMessage();
+      if (!this.inProgress) {
+        this.scheduleNext();
+      }
+    }
+
+    this.scheduleNext = function() {
+      var self = this;
+      var ms = Math.random() * 1000 + 3000;
+      this.inProgress = true;
+      setTimeout(function() { self.next() }, ms);
     }
 
     this.next = function() {
@@ -57,7 +84,10 @@ window.app = {
         return;
       }
 
-      this.inProgress = true;
+      if (this.paused) {
+        return;
+      }
+
       var self = this;
       var nextFinished = function(callback) {
         return function() {
@@ -67,6 +97,8 @@ window.app = {
           self.currIndex++;
           if (self.currIndex >= self.controllerInstance.params.length) {
             self.done = true;
+          } else {
+            self.scheduleNext();
           }
         }
       }
@@ -90,24 +122,21 @@ $('document').ready(function(){
   $.each(app.controllers.bvt, function(_key, controller) { controller.init() });
 
   $(window).on('keydown', function(e) {
-    // Tab or Esc
     if (e.which === 9 || e.which === 27) {
+      // Tab or Esc
       if (app.currTrial) {
         app.currTrial.end();
       }
       e.preventDefault();
-    }
-
-    // Right Arrow
-    if (e.which === 39) {
-      if (app.currTrial && !app.currTrial.inProgress) {
-        app.currTrial.next();
-      }
-    }
-
-    // Space
-    if (e.which === 32) {
+    } else if (app.currTrial && app.currTrial.paused) {
+      app.currTrial.unpause();
+    } else if (e.which === 32) {
+      // Space
       app.layout.showSpacePress();
+    } else {
+      if (app.currTrial) {
+        app.currTrial.pause();
+      }
     }
   });
 });

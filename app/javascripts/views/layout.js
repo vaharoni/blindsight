@@ -28,6 +28,14 @@ window.app.layout = {
 
   resetSpacePress: function() {
     $('#space-press').addClass('d-none');
+  },
+
+  showPauseMessage: function() {
+    $('#pause-glass').removeClass('d-none');
+  },
+
+  removePauseMessage: function() {
+    $('#pause-glass').addClass('d-none');
   }
 
   // For some reason moving programmatically to full screen did not change the height correctly.

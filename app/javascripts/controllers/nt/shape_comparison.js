@@ -53,18 +53,16 @@ var controller = function() {
       return shape;
     }
 
-    setTimeout(function() {
-      var right = drawShape(param[0]);
-      var left = drawShape(param[1]);
-      right.show();
-      left.show();
-      app.sounds.both();
+    var right = drawShape(param[0]);
+    var left = drawShape(param[1]);
+    right.show();
+    left.show();
+    app.sounds.both();
 
-      setTimeout(done(function() {
-        right.hide();
-        left.hide();
-      }), 500);
-    }, 1500)
+    setTimeout(done(function() {
+      right.hide();
+      left.hide();
+    }), 500);
   }
 }
 app.controllers.nt.shapeComparison = app.buildTrialController(controller);
