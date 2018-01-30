@@ -37,7 +37,9 @@ var controller = function() {
   }
 
   this.setup = function() {
-    var FixationDot = new app.shapes.dotClass(app.grids.horizontal, 6.5, 'yellow');
+    // We use 0.8 instead of 6.5 diameter for the fixation dot (as described in paper), but we maintain a virtual
+    // perimeter of 6.5 by the grid, effectively pushing shapes away from the fixation dot by an extra 6.5/2 degrees.
+    var FixationDot = new app.shapes.dotClass(app.grids.horizontal, 0.8, 'yellow');
     FixationDot.new(0,0).show();
   }
 
