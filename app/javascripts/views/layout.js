@@ -1,12 +1,16 @@
 window.app.layout = {
   init: function() {
     this.resetDimensions();
-    $(window).on('resize', this.resetDimensions);
+
+    var self = this;
+    $(window).on('resize', function() {
+      self.resetDimensions();
+    });
   },
 
   resetDimensions: function() {
-    this.width = $(document).width();
-    this.height = $(document).height();
+    this.width = $(window).width();
+    this.height = $(window).height();
   },
 
   length: function(cm) {

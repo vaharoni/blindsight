@@ -41,13 +41,14 @@ window.app = {
     this.done = false;
 
     this.start = function() {
+      app.canvas.resetDimensions();
+      app.canvas.clear();
       this.controllerInstance.setup();
       this.next();
     }
 
     this.end = function() {
       app.controllers.step.two.stop();
-      app.canvas.clear();
     }
 
     this.next = function() {

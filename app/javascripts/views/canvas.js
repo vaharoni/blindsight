@@ -1,10 +1,14 @@
 window.app.canvas = new function() {
   this.init = function() {
-    $('#canvas').attr('height', app.layout.height).attr('width', app.layout.width);
+    this.resetDimensions();
     this.context = $('#canvas')[0].getContext('2d');
     this.context.fillStyle = 'white';
     this.context.strokeStyle = 'white';
     this.context.font = '24px serif';
+  }
+
+  this.resetDimensions = function() {
+    $('#canvas').attr('height', app.layout.height).attr('width', app.layout.width);
   }
 
   this.inColor = function(callback, color) {
