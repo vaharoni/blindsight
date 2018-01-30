@@ -81,7 +81,9 @@ window.app = {
 
 $('document').ready(function(){
   app.layout.init();
-  app.canvas.init();
+  app.canvas.init(app.layout.width, app.layout.height);
+  app.calibrationCanvas.init();
+  app.calibrationCanvas.show();
   app.sounds.init();
   $.each(app.controllers, function(_key, controllerGroup) {
     $.each(controllerGroup, function(_name, controller) {

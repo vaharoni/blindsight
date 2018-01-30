@@ -1,3 +1,4 @@
+// DEPRECATED. REMOVE.
 window.app.controllers.step.one = {
   init: function() {
     $('#step-1').removeClass('d-none');

@@ -1,14 +1,19 @@
-window.app.canvas = new function() {
-  this.init = function() {
-    this.resetDimensions();
-    this.context = $('#canvas')[0].getContext('2d');
+window.app.canvasClass = function(selector) {
+  this.selector = selector;
+
+  this.init = function(width, height) {
+    this.elm = $(this.selector);
+    this.resetDimensions(width, height);
+    this.context = this.elm[0].getContext('2d');
     this.context.fillStyle = 'white';
     this.context.strokeStyle = 'white';
     this.context.font = '24px serif';
   }
 
-  this.resetDimensions = function() {
-    $('#canvas').attr('height', app.layout.height).attr('width', app.layout.width);
+  this.resetDimensions = function(width, height) {
+    this.width = this.width || width;
+    this.height = this.height || height;
+    this.elm.attr('height', this.height).attr('width', this.width);
   }
 
   this.inColor = function(callback, color) {
@@ -38,8 +43,9 @@ window.app.canvas = new function() {
   }
 
   this.clear = function() {
+    var self = this;
     this.inBackColor(function(c) {
-      c.fillRect(0, 0, app.layout.width, app.layout.height)
+      c.fillRect(0, 0, self.width, self.height)
     });
   }
-}()
+}

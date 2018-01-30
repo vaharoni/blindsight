@@ -8,7 +8,6 @@
   <script src="vendor/javascripts/tether.min.js"></script>
   <script src="vendor/javascripts/bootstrap.min.js"></script>
   <script src="vendor/javascripts/soundjs-1.0.0.min.js"></script>
-  <script src="vendor/javascripts/jscookie-2.2.0.js"></script>
 
   <!-- Vendor CSS -->
   <link rel="stylesheet" type="text/css" href="vendor/stylesheets/tether.min.css">
@@ -24,7 +23,9 @@
   <script src="app/javascripts/views/shapes/letter.js"></script>
   <script src="app/javascripts/views/shapes/triangle.js"></script>
   <script src="app/javascripts/views/shapes/rectangle.js"></script>
-  <script src="app/javascripts/views/canvas.js"></script>
+  <script src="app/javascripts/views/canvas_class.js"></script>
+  <script src="app/javascripts/views/canvases/main.js"></script>
+  <script src="app/javascripts/views/canvases/calibration.js"></script>
   <script src="app/javascripts/views/layout.js"></script>
   <script src="app/javascripts/views/sounds.js"></script>
   <script src="app/javascripts/controllers/step1.js"></script>
@@ -58,11 +59,21 @@
         <div class="nt btn btn-lg btn-primary" id="nt-letter-identification">Letter identification</div>
       </div>
     </div>
+
+    <div class="calibration">
+      <h5>Calibration</h5>
+      <p>The displayed rectangle should be 3x1 cm</p>
+      <div class="buttons text-center">
+        <div class="btn btn-primary" id="calibrate-minus">-</div>
+        <div class="btn btn-primary" id="calibrate-plus">+</div>
+        <div class="btn btn-primary" id="calibrate-reset">Reset</div>
+      </div>
+      <canvas id="calibration-canvas" width="600" height="50"></canvas>
+    </div>
   </div>
 
   <div class="d-none" id="step-3">
-    <canvas id="canvas" width="100%" height="100%">
-    </canvas>
+    <canvas id="canvas"></canvas>
     <span id="status-bar">
       <span id="trial-index"></span>
       <span id="space-press" class="d-none">&lt;SPACE&gt;</span>
