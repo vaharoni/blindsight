@@ -1,6 +1,6 @@
 var controller = function() {
+  this.id = 'ntLetterIdentification';
   this.trigger = '#nt-letter-identification';
-
   this.name = 'NT Letter Identification';
 
   // Ruby:

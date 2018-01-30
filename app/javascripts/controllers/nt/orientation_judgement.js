@@ -1,6 +1,6 @@
 var controller = function() {
+  this.id = 'ntOrientationJudgement';
   this.trigger = '#nt-orientation-judgement';
-
   this.name = 'NT judgement of orientation';
 
   // Ruby:

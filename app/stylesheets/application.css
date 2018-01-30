@@ -38,12 +38,16 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 1em;
 }
 
-#pause-glass {
+#pause-glass, #instructions-glass {
   background-color: white;
-  opacity: 0.5;
+  opacity: 0.7;
   width: 100%;
   height: 100%;
   position: fixed;
   color: red;
   padding-top: 12em;
+}
+
+.instructions-template, .pause-template {
+  font-size: 1.5em;
 }

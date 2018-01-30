@@ -1,6 +1,6 @@
 var controller = function() {
+  this.id = 'ntDetection';
   this.trigger = '#nt-detection';
-
   this.name = 'NT localization';
 
   // Ruby:

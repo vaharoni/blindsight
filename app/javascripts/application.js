@@ -3,6 +3,15 @@ window.app = {
   grids: {},
   shapes: {},
   models: {},
+  locales: {},
+
+  i18n: {
+    locale: "he",
+
+    t: function(key) {
+      return app.locales[this.locale][key];
+    }
+  },
 
   export: function() {
     var str = "";
@@ -21,7 +30,7 @@ window.app = {
       var self = this;
       $(this.trigger).on('click', function() {
         app.currTrial = new app.trialContext(self);
-        app.currTrial.start();
+        app.currTrial.setup();
       })
     },
 
@@ -37,17 +46,25 @@ window.app = {
   trialContext: function(controller) {
     this.controllerInstance = controller;
     this.currIndex = 0;
+    this.instructions = false;
     this.inProgress = false;
-    this.done = false;
     this.paused = false;
+    this.done = false;
 
-    this.start = function() {
+    this.setup = function() {
+      this.instructions = true;
       this.paused = false;
       app.canvas.resetDimensions();
       app.canvas.clear();
-      this.controllerInstance.setup();
+      app.layout.resetProgress();
       app.layout.removePauseMessage();
-      app.layout.showProgress(1, this.controllerInstance.params.length);
+      app.layout.showInstructions(this.controllerInstance.id);
+    }
+
+    this.start = function() {
+      this.instructions = false;
+      app.layout.removeInstructions();
+      this.controllerInstance.setup();
       this.scheduleNext();
     }
 
@@ -127,7 +144,7 @@ $('document').ready(function(){
 
     if (e.which === 9 || e.which === 27) {
       // Tab or Esc
-      if (app.currTrial.paused) {
+      if (app.currTrial.paused || app.currTrial.instructions || app.currTrial.done) {
         app.currTrial.end();
       } else {
         app.currTrial.pause();
@@ -137,7 +154,11 @@ $('document').ready(function(){
       app.currTrial.unpause();
     } else if (e.which === 32) {
       // Space
-      app.layout.showSpacePress();
+      if (app.currTrial.instructions) {
+        app.currTrial.start();
+      } else {
+        app.layout.showSpacePress();
+      }
     }
   });
 });

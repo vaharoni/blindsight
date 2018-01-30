@@ -1,6 +1,6 @@
 var controller = function() {
+  this.id = 'bvtLetterIdentification';
   this.trigger = '#bvt-letter-identification';
-
   this.name = 'BVT Letter Identification';
 
   // Ruby:

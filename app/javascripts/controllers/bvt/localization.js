@@ -1,6 +1,6 @@
 var controller = function() {
+  this.id = 'bvtLocalization';
   this.trigger = '#bvt-localization';
-
   this.name = 'BVT localization';
 
   // Ruby:

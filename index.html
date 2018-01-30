@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Blindsight</title>
+  <meta charset="UTF-8">
 
   <!-- Vendor JS -->
   <script src="vendor/javascripts/jquery-3.3.1.min.js"></script>
@@ -16,6 +17,7 @@
   <!-- Application JS -->
   <script src="app/javascripts/application.js"></script>
   <script src="app/javascripts/models/pixels_per_cm.js"></script>
+  <script src="app/javascripts/locales/he.js"></script>
   <script src="app/javascripts/views/grids/four_by_four.js"></script>
   <script src="app/javascripts/views/grids/horizontal.js"></script>
   <script src="app/javascripts/views/grids/six_by_three.js"></script>
@@ -77,22 +79,23 @@
   </div>
 
   <div class="d-none" id="step-3">
-    <div id="pause-glass" class="d-none">
-      <p>
-        - Paused -
-      </p>
-      <span>
-        כדי לצאת מהתרגיל ולחזור לתפריט הראשי
-      </span>
-      <span>
-        ESC או TAB
-      </span>
-      <br/>
-      <span>כל מקש אחר כדי להמשיך בתרגיל הנוכחי</span>
-      <p>
-      </p>
+
+    <div id="instructions-glass" class="d-none">
+      <div class="row">
+        <div class="col-6 instructions-template"></div>
+        <div class="col-6 instructions-template"></div>
+      </div>
     </div>
+
+    <div id="pause-glass" class="d-none">
+      <div class="row">
+        <div class="col-6 pause-template"></div>
+        <div class="col-6 pause-template"></div>
+      </div>
+    </div>
+
     <canvas id="canvas"></canvas>
+
     <span id="status-bar">
       <span id="trial-index"></span>
       <span id="space-press" class="d-none">&lt;SPACE&gt;</span>

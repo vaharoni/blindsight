@@ -1,6 +1,6 @@
 var controller = function() {
+  this.id = 'ntShapeComparison';
   this.trigger = '#nt-shape-comparison';
-
   this.name = 'NT shape comparison';
 
   // Ruby:
