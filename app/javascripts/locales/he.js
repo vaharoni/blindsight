@@ -1,4 +1,7 @@
 window.app.locales.he = {
+  same: "דומה",
+  different: "שונה",
+
   pauseText1: "כדי לצאת מהתרגיל ולחזור לתפריט הראשי ESC או TAB",
   pauseText2: "כל מקש אחר כדי להמשיך בתרגיל הנוכחי",
 

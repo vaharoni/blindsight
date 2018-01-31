@@ -20,8 +20,8 @@ var controller = function() {
     [3, 0, 0]];
 
   this.paramToCsv = function(param) {
-    var orientation = param[2] === -1 ? "Left" : (param[2] === 0 ? "Vertical" : "Right");
-    return (param[0] < 0 ? "Left" : "Right") + "," + orientation;
+    var orientation = param[2] === -1 ? "\\" : (param[2] === 0 ? "|" : "/");
+    return (Math.abs(param[0]) === 1 ? "Near" : "Far") + "," + (param[0] < 0 ? "Left" : "Right") + "," + orientation;
   }
 
   this.setup = function() {

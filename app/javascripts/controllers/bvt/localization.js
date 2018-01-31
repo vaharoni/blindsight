@@ -15,7 +15,7 @@ var controller = function() {
     [-1, 1], [2, 1], [1, 2], [1, -2], [2, 1], [-2, -2], [-2, 1]];
 
   this.paramToCsv = function(param) {
-    return (param[0] < 0 ? "Left" : "Right");
+    return (Math.abs(param[0]) === 1 ? "Near" : "Far") + "," + (param[0] < 0 ? "Left" : "Right");
   }
 
   this.setup = function() {

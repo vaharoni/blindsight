@@ -33,7 +33,7 @@ var controller = function() {
     [["T", 2], ["T", -2]], [["T", 1], ["T", -1]], [["T", 2], ["R", -2]], [["T", 1], ["R", -1]]];
 
   this.paramToCsv = function(param) {
-    return (param[1][1] === -1 ? "Near" : "Far") + "," + (param[0][0] === param[1][0] ? "Same" : "Different");
+    return (param[1][1] === -1 ? "Near" : "Far") + "," + (param[0][0] === param[1][0] ? app.i18n.t("same") : app.i18n.t("different"));
   }
 
   this.setup = function() {
