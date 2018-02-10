@@ -10,6 +10,13 @@ window.app = {
 
     t: function(key) {
       return app.locales[this.locale][key];
+    },
+
+    init: function() {
+      var params = new URLSearchParams(window.location.search);
+      if (params.has('locale') && params.get('locale').toLowerCase() === 'en' ) {
+        this.locale = 'en';
+      }
     }
   },
 
@@ -128,6 +135,7 @@ window.app = {
 }
 
 $('document').ready(function(){
+  app.i18n.init();
   app.layout.init();
   app.canvas.init(app.layout.width, app.layout.height);
   app.calibrationCanvas.init();
