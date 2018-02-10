@@ -8,7 +8,7 @@ window.app.locales.en = {
   instructionsSuffix: "Press space to begin",
   bvtLetterIdentification: "Every beep = one of the letters A,C,L",
   bvtLocalization: "Every beep = blink",
-  ntDetection: "40% of beeps have on corresponding blink",
+  ntDetection: "40% of beeps have no corresponding blink",
   ntLetterIdentification: "Every beep = one of the letters M,S,T",
   ntOrientationJudgement: "Every beep = slanted rectangle",
   ntShapeComparison: "Every beep = shapes on both sides"
