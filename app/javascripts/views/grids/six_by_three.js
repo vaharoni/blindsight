@@ -2,7 +2,8 @@
 // Possible y values: [-1, 0, 1]
 window.app.grids.sixByThree = {
   getX: function(x) {
-    return app.layout.width / 2 + app.layout.length(x * 3);
+    var correction = x === 0 ? 0 : Math.abs(x) / x;
+    return app.layout.width / 2 + app.layout.length(x * 3 + correction);
   },
 
   getY: function(y) {
