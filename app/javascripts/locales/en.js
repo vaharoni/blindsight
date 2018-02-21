@@ -11,5 +11,6 @@ window.app.locales.en = {
   ntDetection: "40% of beeps have no corresponding blink",
   ntLetterIdentification: "Every beep = one of the letters M,S,T",
   ntOrientationJudgement: "Every beep = slanted rectangle",
-  ntShapeComparison: "Every beep = shapes on both sides"
+  ntShapeComparison: "Every beep = shapes on both sides",
+  ntExperimental: "Every beep = one of 12 familiar photos"
 }

@@ -1,8 +1,8 @@
 window.app.sounds = {
   init: function() {
-    createjs.Sound.registerSound("app/media/left.mp3", 'left');
-    createjs.Sound.registerSound("app/media/right.mp3", 'right');
-    createjs.Sound.registerSound("app/media/both.mp3", 'both');
+    createjs.Sound.registerSound("app/media/sounds/left.mp3", 'left');
+    createjs.Sound.registerSound("app/media/sounds/right.mp3", 'right');
+    createjs.Sound.registerSound("app/media/sounds/both.mp3", 'both');
   },
 
   left: function() {
