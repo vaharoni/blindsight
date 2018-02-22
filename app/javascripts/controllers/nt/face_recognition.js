@@ -1,7 +1,7 @@
 var controller = function() {
-  this.id = 'ntExperimental';
-  this.trigger = '#nt-experimental';
-  this.name = 'NT experimental';
+  this.id = 'ntFaceRecognition';
+  this.trigger = '#nt-face-recognition';
+  this.name = 'NT Face Recognition';
 
   // Ruby:
   //   ([*1..12].product([0,1]) * 4).shuffle
@@ -38,4 +38,4 @@ var controller = function() {
     }, 500);
   }
 }
-app.controllers.nt.experimental = app.buildTrialController(controller);
+app.controllers.nt.faceRecognition = app.buildTrialController(controller);
