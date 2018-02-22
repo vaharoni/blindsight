@@ -51,3 +51,9 @@ h1, h2, h3, h4, h5, h6 {
 .instructions-template, .pause-template {
   font-size: 1.5em;
 }
+
+.version {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}

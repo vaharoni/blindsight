@@ -2,6 +2,7 @@ window.app.layout = {
   init: function() {
     this.resetDimensions();
     this.setupPause();
+    this.showVersion();
 
     var self = this;
     $(window).on('resize', function() {
@@ -9,13 +10,17 @@ window.app.layout = {
     });
   },
 
+  length: function(cm) {
+    return cm * app.models.pixelsPerCm.val();
+  },
+
+  showVersion: function() {
+    $('.version').text('Version ' + app.version);
+  },
+
   resetDimensions: function() {
     this.width = $(window).width();
     this.height = $(window).height();
-  },
-
-  length: function(cm) {
-    return cm * app.models.pixelsPerCm.val();
   },
 
   setupPause: function() {
