@@ -169,4 +169,6 @@ $('document').ready(function(){
       }
     }
   });
+
+  $('#instructions-glass').on('click', function() { app.currTrial.start() });
 });
