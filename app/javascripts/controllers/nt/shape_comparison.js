@@ -62,7 +62,7 @@ var controller = function() {
     setTimeout(done(function() {
       right.hide();
       left.hide();
-    }), 500);
+    }), 200);
   }
 }
 app.controllers.nt.shapeComparison = app.buildTrialController(controller);

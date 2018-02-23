@@ -35,7 +35,7 @@ var controller = function() {
       image.hide();
       self.fixationDot.show();
       done()();
-    }, 500);
+    }, 200);
   }
 }
 app.controllers.nt.faceRecognition = app.buildTrialController(controller);
