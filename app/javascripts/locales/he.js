@@ -11,6 +11,5 @@ window.app.locales.he = {
   ntDetection: "ל-40% מהצלילים אין הבהוב",
   ntLetterIdentification: "M,S,T כל צליל = אחת מהאותיות",
   ntOrientationJudgement: "כל צליל = מלבן מוטה",
-  ntShapeComparison: "כל צליל = צורות משני הצדדים",
-  ntFaceRecognition: "כל צליל = אחת מ-12 תמונות מוכרות"
+  ntShapeComparison: "כל צליל = צורות משני הצדדים"
 }
