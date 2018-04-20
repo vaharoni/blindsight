@@ -31,9 +31,9 @@ var controller = function() {
     if (param.length > 0) {
       var dot = TrialDot.new.apply(TrialDot, param);
       dot.show();
-      setTimeout(done(dot.hide), 200);
+      setTimeout(done(dot.hide), 400);
     } else {
-      setTimeout(done(), 200);
+      setTimeout(done(), 400);
     }
     app.sounds.both();
   }
