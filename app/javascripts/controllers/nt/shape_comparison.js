@@ -39,13 +39,13 @@ var controller = function() {
   this.setup = function() {
     // We use 0.8 instead of 6.5 diameter for the fixation dot (as described in paper), but we maintain a virtual
     // perimeter of 6.5 by the grid, effectively pushing shapes away from the fixation dot by an extra 6.5/2 degrees.
-    var FixationDot = new app.shapes.dotClass(app.grids.horizontal, 0.8, 'yellow');
+    var FixationDot = new app.shapes.dotClass(app.grids.horizontal, 0.8, 'red');
     FixationDot.new(0,0).show();
   }
 
   this.run = function(param, done) {
-    var Triangle = new app.shapes.triangleClass(app.grids.horizontal, 1, 3, 'white');
-    var Rectangle = new app.shapes.rectangleClass(app.grids.horizontal, 1, 3, 'white');
+    var Triangle = new app.shapes.triangleClass(app.grids.horizontal, 1, 3, 'black');
+    var Rectangle = new app.shapes.rectangleClass(app.grids.horizontal, 1, 3, 'black');
 
     var drawShape = function(arr) {
       var shape = arr[0] === "R" ? Rectangle.new(arr[1], 1) : Triangle.new(arr[1], 1);

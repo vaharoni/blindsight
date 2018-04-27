@@ -19,7 +19,7 @@ var controller = function() {
   }
 
   this.setup = function() {
-    var FixationDot = new app.shapes.dotClass(app.grids.fourByFour, 0.8, 'yellow');
+    var FixationDot = new app.shapes.dotClass(app.grids.fourByFour, 0.8, 'red');
     FixationDot.new(0, 0).show();
   }
 

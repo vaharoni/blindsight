@@ -24,12 +24,12 @@ var controller = function() {
   }
 
   this.setup = function() {
-    var FixationDot = new app.shapes.dotClass(app.grids.fourByFour, 0.8, 'yellow');
+    var FixationDot = new app.shapes.dotClass(app.grids.fourByFour, 0.8, 'red');
     FixationDot.new(0,0).show();
   }
 
   this.run = function(param, done) {
-    var Letter = new app.shapes.letterClass(app.grids.fourByFour, 72, 'white');
+    var Letter = new app.shapes.letterClass(app.grids.fourByFour, 72, 'black');
     var letter = Letter.new.apply(Letter, param);
     letter.show();
     app.sounds.chooseEffect(param[0]);

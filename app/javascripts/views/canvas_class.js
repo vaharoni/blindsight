@@ -5,8 +5,8 @@ window.app.canvasClass = function(selector) {
     this.elm = $(this.selector);
     this.resetDimensions(width, height);
     this.context = this.elm[0].getContext('2d');
-    this.context.fillStyle = 'white';
-    this.context.strokeStyle = 'white';
+    this.context.fillStyle = 'black';
+    this.context.strokeStyle = 'black';
     this.context.font = '24px serif';
   }
 
@@ -27,11 +27,11 @@ window.app.canvasClass = function(selector) {
   },
 
   this.inForeColor = function(callback, color) {
-    this.inColor(callback, color || 'white')
+    this.inColor(callback, color || 'black')
   }
 
   this.inBackColor = function(callback, color) {
-    this.inColor(callback, color || 'black')
+    this.inColor(callback, color || 'white')
   }
 
   this.inFontStyle = function(callback, size, style) {

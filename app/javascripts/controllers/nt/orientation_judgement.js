@@ -25,12 +25,12 @@ var controller = function() {
   }
 
   this.setup = function() {
-    var FixationDot = new app.shapes.dotClass(app.grids.sixByThree, 0.8, 'yellow');
+    var FixationDot = new app.shapes.dotClass(app.grids.sixByThree, 0.8, 'red');
     FixationDot.new(0,0).show();
   }
 
   this.run = function(param, done) {
-    var Rectangle = new app.shapes.rectangleClass(app.grids.sixByThree, 1, 3, 'white');
+    var Rectangle = new app.shapes.rectangleClass(app.grids.sixByThree, 1, 3, 'black');
     var rect = Rectangle.new.apply(Rectangle, param);
     rect.show();
     app.sounds.chooseEffect(param[0]);
