@@ -1,5 +1,5 @@
 window.app = {
-  version: '1.0.9',
+  version: '1.0.10',
   controllers: { nt: {}, bvt: {} },
   grids: {},
   shapes: {},
@@ -138,6 +138,7 @@ window.app = {
 $('document').ready(function(){
   app.i18n.init();
   app.layout.init();
+  app.sounds.init();
   app.canvas.init(app.layout.width, app.layout.height);
   app.calibrationCanvas.init();
   app.calibrationCanvas.show();
@@ -170,13 +171,5 @@ $('document').ready(function(){
     }
   });
 
-  var soundsInitialized = false;
-  $('#instructions-glass').on('click', function() {
-    if (!soundsInitialized) {
-      app.sounds.init();
-      soundsInitialized = true;
-    }
-
-    app.currTrial.start()
-  });
+  $('#instructions-glass').on('click', function() { app.currTrial.start() });
 });
