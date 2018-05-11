@@ -1,5 +1,5 @@
 window.app = {
-  version: '1.0.8',
+  version: '1.0.9',
   controllers: { nt: {}, bvt: {} },
   grids: {},
   shapes: {},
@@ -141,7 +141,6 @@ $('document').ready(function(){
   app.canvas.init(app.layout.width, app.layout.height);
   app.calibrationCanvas.init();
   app.calibrationCanvas.show();
-  app.sounds.init();
   app.controllers.navigation.init();
   $.each(app.controllers.nt, function(_key, controller) { controller.init() });
   $.each(app.controllers.bvt, function(_key, controller) { controller.init() });
@@ -171,5 +170,13 @@ $('document').ready(function(){
     }
   });
 
-  $('#instructions-glass').on('click', function() { app.currTrial.start() });
+  var soundsInitialized = false;
+  $('#instructions-glass').on('click', function() {
+    if (!soundsInitialized) {
+      app.sounds.init();
+      soundsInitialized = true;
+    }
+
+    app.currTrial.start()
+  });
 });
