@@ -1,5 +1,5 @@
 window.app = {
-  version: '1.0.10',
+  version: '1.0.11',
   controllers: { nt: {}, bvt: {} },
   grids: {},
   shapes: {},

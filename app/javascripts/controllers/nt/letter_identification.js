@@ -33,7 +33,7 @@ var controller = function() {
     var letter = Letter.new.apply(Letter, param)
     letter.show();
     app.sounds.chooseEffect(param[0]);
-    setTimeout(done(letter.hide), 400);
+    setTimeout(done(letter.hide), 300);
   }
 }
 app.controllers.nt.letterIdentification = app.buildTrialController(controller);
